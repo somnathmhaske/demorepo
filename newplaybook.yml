@@ -1,0 +1,11 @@
+---
+ - name: patching_playbook
+   hosts: all:!ansp
+   serial: 40
+   become: true
+   ignore_unreachable: yes
+   gather_facts: no
+   
+   tasks:
+    - name: Patching servers
+      shell: "/root/yum_auto_update.sh override && rpm -q kernel --last"
